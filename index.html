@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will's Rock Paper Scissors</title>
+</head>
+<body>
+  <p>Rock Paper Scissors Game!</p>
+  <div style="
+    display: flex;
+    align-items: center;
+  ">
+    <img style="height: 80px; width: 75px; border-radius: 45px; cursor: pointer" src="rock.png" onclick="check('rock')"></img>
+    <img style="height: 70px; width: 80px; padding-top: 10px; border-radius: 45px; margin-bottom: 2px; cursor: pointer;" src="paper.png" onclick="check('paper')"></img>
+    <img style="height: 72px; width: 72px; border-radius: 45px; cursor: pointer;" src="scissors.png" onclick="check('scissors')"></img>
+  </div>
+
+  <p id="win-message"></p>
+  
+  
+  
+  <script>
+    const winMessage = document.getElementById("win-message")
+
+    function getRandomElement (array) {
+      if ( array.length === 0) {
+        return undefined;
+      }
+      const randomIndex = Math.floor(Math.random() * array.length);
+      return array[randomIndex];
+    }
+
+    const choices = ['rock', 'paper', 'scissors'];
+
+    function check(userDecision) {
+      let computerDecision = getRandomElement(choices);
+      if (userDecision === computerDecision) {
+        document.getElementById("win-message").textContent = `It's a Tie! Computer chose ${computerDecision} and you chose ${userDecision}!`
+      } else if (userDecision === "rock" && computerDecision === 'scissors') {
+        document.getElementById("win-message").textContent = "You win! The computer chose scissors!"
+      } else if (userDecision === "rock" && computerDecision === 'paper') {
+        document.getElementById("win-message").textContent = "You lose! The computer chose paper!"
+      }else if (userDecision === "scissors" && computerDecision === 'paper') {
+        document.getElementById("win-message").textContent = "You win! The computer chose paper!"
+      } else if (userDecision === "scissors" && computerDecision === 'rock') {
+        document.getElementById("win-message").textContent = "You lose! The computer chose rock!"
+      }else if (userDecision === "paper" && computerDecision === 'rock') {
+        document.getElementById("win-message").textContent = "You win! The computer chose rock!"
+      } else if (userDecision === "paper" && computerDecision === 'scissors') {
+        document.getElementById("win-message").textContent = "You lose! The computer chose scissors!"
+      }
+    }
+
+    
+   
+  </script>
+  
+</body>
+</html>
